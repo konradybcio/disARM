@@ -137,15 +137,15 @@ clidr_matrix = [
 ]
 
 midr_matrix = [
-        # [
-        #         "Part number",
-        #         partnum_doubledict,
-        #         4, 15
-        # ],
         [
-               "Architecture",
-               architecture_dict,
-               16, 19
+                "Part number",
+                partnum_doubledict,
+                4, 15
+        ],
+        [
+                "Architecture",
+                architecture_dict,
+                16, 19
         ],
         [
                 "Implementer",
