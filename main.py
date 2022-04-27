@@ -28,7 +28,7 @@ def doubledict_value_if_known(dd: dict, key1, key2):
         if key1 in dd.keys():
                 if key2 in dd[key1].keys():
                         return dd[key1][key2]
-        return f"Unknown ({bin(key1)}, {bin(key2)})"
+        return f"Unknown ({key1}, {bin(key2)})"
 
 def supported_or_not(val, mask):
         return "√" if val & mask > 0 else "X"
