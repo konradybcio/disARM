@@ -41,7 +41,9 @@ def print_features(val, mtx, implementer):
         for i in range(len(mtx)):
                 # Yay, special case for partnum..
                 if isinstance(list(mtx[i][1].values())[0], dict):
-                        print(f"{mtx[i][0]}: {implementer}")
+                        ret = doubledict_value_if_known(mtx[i][1], implementer, get_nth_bits(val, mtx[i][2], mtx[i][3]))
+                        print(f"{mtx[i][0]}: {ret}")
+                        continue
                 ret = dict_value_if_known(mtx[i][1], get_nth_bits(val, mtx[i][2], mtx[i][3]))
                 print(f"{mtx[i][0]}: {ret}")
 
