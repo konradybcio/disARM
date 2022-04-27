@@ -50,7 +50,7 @@ def print_features(val, mtx, implementer):
 
 # reg_name, corresponding_matrix, is_simple
 supported_regs = [
-        ["ID_AA64MMFR0_EL1", constants.mmfr0_matrix, True],
+        ["ID_AA64MMFR0_EL1", constants.mmfr0_matrix, False],
         ["ID_AA64ISAR0_EL1", constants.isar0_matrix, True],
         ["ID_AA64PFR0_EL1", constants.pfr0_matrix, True],
         ["ID_AA64PFR1_EL1", constants.pfr1_matrix, True],
