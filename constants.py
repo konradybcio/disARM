@@ -26,7 +26,9 @@ implementer_dict = {
 
 partnum_doubledict = {
         "Apple Inc.": {
-                0x01: "A7 Cyclone"
+                0x01: "A7 Cyclone",
+                0x02: "A8 Typhoon",
+                0x03: "A8X Typhoon"
         }
 }
 
