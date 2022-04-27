@@ -61,7 +61,7 @@ def main():
         input_arr = [None for _ in range(n_regs)]
 
         for i in range(n_regs):
-                input_arr[i] = int(input(f"Please input the value of {supported_regs[i][0]}: "))
+                input_arr[i] = int(input(f"Please input the value of {supported_regs[i][0]}: "), base=16)
 
         print()
         print("------")
