@@ -28,7 +28,29 @@ partnum_doubledict = {
         "Apple Inc.": {
                 0x01: "A7 Cyclone",
                 0x02: "A8 Typhoon",
-                0x03: "A8X Typhoon"
+                0x03: "A8X Typhoon",
+                0x04: "A9 Twister",
+                0x05: "A9X Twister",
+                0x06: "A10 Hurricane",
+                0x07: "A10X Hurricane (Myst)",
+                0x08: "A11 Monsoon [e-core]",
+                0x09: "A11 Mistral [p-core]",
+                # 0x0a is unknown apparently
+                0x0b: "A12 Vortex [p-core]",
+                0x0c: "A12 Tempest [e-core]",
+                # 0x0d-0x0e are unknown apparently
+                0x0f: "S4/S5 Tempest [yes, on the watch]",
+                0x10: "A12X/A12Z Vortex [p-core]",
+                0x11: "A12X/A12Z Tempest [e-core]",
+                0x12: "A13 Lightning [p-core]",
+                0x13: "A13 Thunder [e-core]",
+                # Another big gap
+                0x20: "A14 Icestorm [e-core]",
+                0x21: "A14 Firestroem [p-core]",
+                0x22: "M1 Icestorm [e-core]",
+                0x23: "M1 Firestorm [p-core]",
+                # Gaaap!
+                0x26: "S6/S7 Thunder [yes, on the watch]"
         }
 }
 
