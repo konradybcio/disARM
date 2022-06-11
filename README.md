@@ -16,3 +16,14 @@ For testing, you can use the values extracted from an Apple iPhone 5S (Apple A7 
 ```
 
 ..or any other from the known_values directory, by simply providing the filename as an argument.
+
+
+If you came here to help with Apple SoC mainlining, you may easily get these registers by running the `dump` command in [pongoOS from my fork](https://github.com/konradybcio/pongoOS):
+
+```
+[boot pongo blah blah, cd to pongo dir]
+
+python3 scripts/issue_cmd.py dump
+
+(or use pongoterm)
+```
