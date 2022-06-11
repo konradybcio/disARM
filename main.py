@@ -1,6 +1,8 @@
 # SPDX-License-Identifier: GPL-2.0-only
 
+import ast
 import constants
+import sys
 
 def gen_bitmask(start, stop):
         i = 0
@@ -49,37 +51,50 @@ def print_features(val, mtx, implementer):
 
 
 # reg_name, corresponding_matrix, is_simple
-supported_regs = [
-        ["ID_AA64MMFR0_EL1", constants.mmfr0_matrix, False],
-        ["ID_AA64MMFR1_EL1", constants.mmfr1_matrix, False],
-        ["ID_AA64ISAR0_EL1", constants.isar0_matrix, True],
-        ["ID_AA64PFR0_EL1", constants.pfr0_matrix, True],
-        ["ID_AA64PFR1_EL1", constants.pfr1_matrix, True],
-        ["CLIDR_EL1", constants.clidr_matrix, False],
-        ["MIDR_EL1", constants.midr_matrix, False]
-]
+supported_regs = {
+        "ID_AA64MMFR0_EL1": [constants.mmfr0_matrix, False],
+        "ID_AA64MMFR1_EL1": [constants.mmfr1_matrix, False],
+        "ID_AA64ISAR0_EL1": [constants.isar0_matrix, True],
+        "ID_AA64PFR0_EL1": [constants.pfr0_matrix, True],
+        "ID_AA64PFR1_EL1": [constants.pfr1_matrix, True],
+        "CLIDR_EL1": [constants.clidr_matrix, False],
+        "MIDR_EL1": [constants.midr_matrix, False]
+}
 
 def main():
-        n_regs = len(supported_regs)
-        input_arr = [None for _ in range(n_regs)]
         implementer = None
+        input_dict = {}
 
-        for i in range(n_regs):
-                input_arr[i] = int(input(f"Please input the value of {supported_regs[i][0]}: "), base=16)
+        if len(sys.argv) > 1:
+                if sys.argv[1] != "main.py":
+                        filename = sys.argv[1]
+                if len(sys.argv) == 2:
+                        filename = sys.argv[1]
+                with open(filename, "r") as f:
+                        file_data = f.readline()
+                        try:
+                                input_dict = ast.literal_eval(file_data)
+                        except:
+                                Exception("The file does not contain a valid dictionary.")
+        else:
+                for key in supported_regs.keys():
+                        input_dict[key] = int(input(f"Please input the value of {key} (in hex): "), base=16)
 
         print()
         print("------")
         print()
 
-        for i in range(n_regs):
-                if supported_regs[i][0] == "MIDR_EL1":
-                        implementer = constants.implementer_dict[get_nth_bits(input_arr[i], 24, 31)]
+        for key in input_dict:
+                if key == "MIDR_EL1":
+                        implementer = constants.implementer_dict[get_nth_bits(input_dict[key], 24, 31)]
 
-                print(f"* {supported_regs[i][0]}:")
-                if supported_regs[i][2]:
-                        print_supported_features(input_arr[i], supported_regs[i][1])
+                print(f"* {key}:")
+                if supported_regs[key][1]:
+                        print_supported_features(input_dict[key], supported_regs[key][0])
                 else:
-                        print_features(input_arr[i], supported_regs[i][1], implementer)
+                        print_features(input_dict[key], supported_regs[key][0], implementer)
+
+                # Newline to make it look half-decent
                 print()
 
 
