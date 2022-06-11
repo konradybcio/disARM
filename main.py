@@ -79,6 +79,9 @@ def main():
         else:
                 for key in supported_regs.keys():
                         input_dict[key] = int(input(f"Please input the value of {key} (in hex): "), base=16)
+                
+                with open("output.dict", "w+") as f:
+                        f.write(str(input_dict))
 
         print()
         print("------")
