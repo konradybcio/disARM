@@ -62,6 +62,7 @@ supported_regs = {
 }
 
 def main():
+        regs_without_value = None
         implementer = None
         input_dict = {}
 
@@ -75,7 +76,7 @@ def main():
                         try:
                                 input_dict = ast.literal_eval(file_data)
                         except:
-                                Exception("The file does not contain a valid dictionary.")
+                                raise Exception("The file does not contain a valid dictionary.")
         else:
                 for key in supported_regs.keys():
                         input_dict[key] = int(input(f"Please input the value of {key} (in hex): "), base=16)
@@ -83,11 +84,18 @@ def main():
                 with open("output.dict", "w+") as f:
                         f.write(str(input_dict))
 
+        regs_without_value = list(set(supported_regs.keys()) - set(input_dict))
+        if len(regs_without_value) > 0:
+                print(f"NOTICE: the following regs don't have a value: {regs_without_value}")
+
         print()
         print("------")
         print()
 
         for key in input_dict:
+                if key not in supported_regs.keys():
+                        raise Exception(f"Register {key} is not supported.. how did we get here!?")
+
                 if key == "MIDR_EL1":
                         implementer = constants.implementer_dict[get_nth_bits(input_dict[key], 24, 31)]
 
