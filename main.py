@@ -51,6 +51,7 @@ def print_features(val, mtx, implementer):
 # reg_name, corresponding_matrix, is_simple
 supported_regs = [
         ["ID_AA64MMFR0_EL1", constants.mmfr0_matrix, False],
+        ["ID_AA64MMFR1_EL1", constants.mmfr1_matrix, False],
         ["ID_AA64ISAR0_EL1", constants.isar0_matrix, True],
         ["ID_AA64PFR0_EL1", constants.pfr0_matrix, True],
         ["ID_AA64PFR1_EL1", constants.pfr1_matrix, True],
@@ -61,6 +62,7 @@ supported_regs = [
 def main():
         n_regs = len(supported_regs)
         input_arr = [None for _ in range(n_regs)]
+        implementer = None
 
         for i in range(n_regs):
                 input_arr[i] = int(input(f"Please input the value of {supported_regs[i][0]}: "), base=16)
@@ -69,10 +71,10 @@ def main():
         print("------")
         print()
 
-        # Hacky, but implementer value is needed for partnum, eh..
-        implementer = constants.implementer_dict[get_nth_bits(input_arr[5], 24, 31)]
-
         for i in range(n_regs):
+                if supported_regs[i][0] == "MIDR_EL1":
+                        implementer = constants.implementer_dict[get_nth_bits(input_arr[i], 24, 31)]
+
                 print(f"* {supported_regs[i][0]}:")
                 if supported_regs[i][2]:
                         print_supported_features(input_arr[i], supported_regs[i][1])

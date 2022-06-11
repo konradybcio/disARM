@@ -301,3 +301,115 @@ mmfr0_matrix = [
                 60, 63
         ]
 ]
+
+mmfr1_matrix = [
+        [
+                "HAFDBS",
+                {
+                        0b0000: "Hardware update of the Access flag and dirty state are not supported.",
+                        0b0001: "Hardware update of the Access flag is supported.",
+                        0b0010: "Hardware update of both the Access flag and dirty state is supported.",
+                },
+                0, 3
+        ],
+        [
+                "VMIDBits",
+                {
+                        0b0000: "8 bits",
+                        0b0010: "16 bits"
+                },
+                4, 7
+        ],
+        [
+                "VHE",
+                {
+                        0b0000: "Virtualization Host Extensions not supported.",
+                        0b0001: "Virtualization Host Extensions supported."
+                },
+                8, 11
+        ],
+        [
+                "HPDS",
+                {
+                        0b0000: "Disabling of hierarchical controls not supported.",
+                        0b0001: "Disabling of hierarchical controls supported with the TCR_EL1.{HPD1, HPD0}, TCR_EL2.HPD or TCR_EL2.{HPD1, HPD0}, and TCR_EL3.HPD bits.",
+                        0b0010: "As for value 0b0001, and adds possible hardware allocation of bits[62:59] of the translation table descriptors from the final lookup level for IMPLEMENTATION DEFINED use."
+                },
+                12, 15
+        ],
+        [
+                "LORegions",
+                {
+                        0b0000: "LORegions not supported.",
+                        0b0001: "LORegions supported."
+                },
+                16, 19
+        ],
+        [
+                "PAN",
+                {
+                        0b0000: "PAN not supported.",
+                        0b0001: "PAN supported.",
+                        0b0010: "PAN supported and AT S1E1RP and AT S1E1WP instructions supported",
+                        0b0011: "PAN supported, AT S1E1RP and AT S1E1WP instructions supported, and SCTLR_EL1.EPAN and SCTLR_EL2.EPAN bits supported."
+                },
+                20, 23
+        ],
+        [
+                "SpecSEI",
+                {
+                        0b0000: "The PE never generates an SError interrupt due to an External abort on a speculative read.",
+                        0b0001: "The PE might generate an SError interrupt due to an External abort on a speculative read."
+                },
+                24, 27
+        ],
+        [
+                "XNX",
+                {
+                        0b0000: "Distinction between EL0 and EL1 execute-never control at stage 2 not supported.",
+                        0b0001: "Distinction between EL0 and EL1 execute-never control at stage 2 supported."
+                },
+                28, 31
+        ],
+        [
+                "TWED",
+                {
+                        0b0000: "Configurable delayed trapping of WFE is not supported.",
+                        0b0001: "Configurable delayed trapping of WFE is supported."
+                },
+                32, 35
+        ],
+        [
+                "ETS",
+                {
+                        0b0000: "Enhanced Translation Synchronization is not supported.",
+                        0b0001: "Enhanced Translation Synchronization is supported."
+                },
+                36, 39
+        ],
+        [
+                "HCX",
+                {
+                        0b0000: "HCRX_EL2 and its associated EL3 trap are not supported.",
+                        0b0001: "HCRX_EL2 and its associated EL3 trap are supported."
+                },
+                40, 43
+        ],
+        [
+                "AFP",
+                {
+                        0b0000: "The FPCR.{AH, FIZ, NEP} fields are not supported.",
+                        0b0001: "The FPCR.{AH, FIZ, NEP} fields are supported."
+                },
+                44, 47
+        ],
+        [
+                "nTLBPA",
+                {
+                        0b0000: "yes (it's too long, see the docs)",
+                        0b0001: "no (it's too long, see the docs)"
+                },
+                48, 51
+        ]
+        # 52-63 res
+]
