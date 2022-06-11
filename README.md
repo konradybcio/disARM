@@ -7,9 +7,12 @@ For testing, you can use the values extracted from an Apple iPhone 5S (Apple A7 
 
 ```
 "ID_AA64MMFR0_EL1":     0x11021
+"ID_AA64MMFR1_EL1":     0x0
 "ID_AA64ISAR0_EL1":	0x1110
 "ID_AA64PFR0_EL1":	0x1012
 "ID_AA64PFR1_EL1":	0x0
 "CLIDR_EL1":            0x9200023
 "MIDR_EL1":		0x611f0011
 ```
+
+..or any other from the known_values directory, by simply providing the filename as an argument.
